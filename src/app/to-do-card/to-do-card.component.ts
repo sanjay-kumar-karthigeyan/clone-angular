@@ -14,10 +14,11 @@ export class ToDoCardComponent implements OnInit {
   public cardForm: FormGroup;
 
   constructor(public todoservice: ToDoCardService, private fb: FormBuilder) {
-    this.todoservice.getCardData().then((data) => {
-      console.log('card data from DB', data);
-      this.cardList = data.userData;
-    });
+    // this.todoservice.getCardData().then((data) => {
+    //   console.log('card data from DB', data);
+    //   this.cardList = data.userData;
+    // });
+    this.getCardDetails();
 
     this.cardForm = this.fb.group({
       name: ['', Validators.required],
@@ -44,6 +45,13 @@ export class ToDoCardComponent implements OnInit {
     this.todoservice.createCardData(data).then((success) => {
       console.log('card data from DB', success);
       this.cardList.push(success.userData);
+    });
+  }
+
+  getCardDetails() {
+    this.todoservice.getCardData().then((data) => {
+      console.log('card data from DB', data);
+      this.cardList = data.userData;
     });
   }
 
