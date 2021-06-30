@@ -1,0 +1,70 @@
+:root {
+  --padding-page: 24px;
+
+  //color
+  --si-primary-500: #214270;
+  --si-primary-100: #526d9f;
+  --si-primary-700: #001c44;
+  --si-accent-200: #ffa642;
+  --si-accent-100: #ff7503;
+  --si-accent-400: #c44500;
+}
+
+@include mat-core();
+
+$mat-si-palette: (
+  100: var(--si-primary-100),
+  500: var(--si-primary-500),
+  700: var(--si-primary-700),
+  A100: var(--si-accent-100),
+  A200: var(--si-accent-200),
+  A400: var(--si-accent-400),
+  contrast: (
+    500: $light-primary-text,
+    A200: $dark-primary-text,
+  )
+);
+
+$si-app-primary: mat-palette($mat-si-palette);
+$si-app-accent: mat-palette($mat-si-palette,A200,A100,A400);
+$si-app-theme:   mat-light-theme($si-app-primary, $si-app-accent);
+
+@include angular-material-theme($si-app-theme);
+
+:root {
+  // Colors
+  --text-color: #{$light-primary-text};
+  --text-color-light: #{$dark-primary-text};
+  --text-secondary-color: #{$light-secondary-text};
+  --text-secondary-color-light: #{$dark-secondary-text};
+  --text-hint: #{$light-disabled-text};
+  --text-hint-light: #{$dark-disabled-text};
+}
+// .si-dark-theme {
+//   @include angular-material-theme($dark-theme);
+// }
+
+
+// @include mat-core();
+
+// $smartgcpro-ux-primary: mat-palette($mat-si-palette);
+// $smartgcpro-ux-accent: mat-palette($mat-si-palette, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $smartgcpro-ux-warn: mat-palette($mat-red);
+
+// $smartgcpro-ux-theme: mat-light-theme((
+//   color: (
+//     primary: $smartgcpro-ux-primary,
+//     accent: $smartgcpro-ux-accent,
+//     warn: $smartgcpro-ux-warn,
+//   )
+// ));
+
+// @include angular-material-theme($smartgcpro-ux-theme);
+
+// $custom-typography: mat-typography-config(
+//   $font-family: $font-family
+// );
+
+// @include mat-base-typography($custom-typography);
