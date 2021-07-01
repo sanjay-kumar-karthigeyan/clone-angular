@@ -14,19 +14,10 @@ pipelines:
             - node
           script:
             - npm install
-<<<<<<< HEAD
-          artifact:
-            - node_modules/**
-      - step:
-          name: Code Unit Testing
-          script:
-            - npm runt test
-=======
       - step:
           name: Code Unit Testing
           script:
             - npm run test
->>>>>>> develop
           caches:
             - node
       - step:
