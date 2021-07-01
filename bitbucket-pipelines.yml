@@ -34,7 +34,7 @@ pipelines:
       - step:
           name: Lint Testing
           script:
-            - ng lint
+            - npm run lint
       - step:
           name: Code Unit Testing
           script:
