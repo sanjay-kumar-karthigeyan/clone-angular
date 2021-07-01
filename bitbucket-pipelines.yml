@@ -17,7 +17,7 @@ pipelines:
       - step:
           name: Code Unit Testing
           script:
-            - npm runt test
+            - npm run test
           caches:
             - node
       - step:
