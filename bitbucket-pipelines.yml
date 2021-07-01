@@ -32,12 +32,12 @@ pipelines:
           script:
             - npm install
       - step:
+          name: Lint Testing
+          script:
+            - ng lint
+      - step:
           name: Code Unit Testing
           script:
             - npm run test
           caches:
             - node
-      - step:
-          name: Lint Testing
-          script:
-            - ng lint
