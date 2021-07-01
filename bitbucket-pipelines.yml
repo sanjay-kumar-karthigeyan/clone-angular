@@ -31,6 +31,8 @@ pipelines:
             - node
           script:
             - npm install
+          artifacts:
+            - node_modules/** # Save modules for next steps
       - step:
           name: Lint Testing
           script:
