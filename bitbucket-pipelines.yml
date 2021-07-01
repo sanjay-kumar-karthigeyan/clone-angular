@@ -6,8 +6,25 @@
 image: node:10.15.3
 
 pipelines:
+  default:
+    - step:
+        script:
+          - echo "This script runs on all branches that don't have any specific pipeline assigned in 'branches'."
   branches:
+    main:
+      - step:
+          script:
+            - echo "This script runs only on commit to the MAIN branch."
+    develop:
+      - step:
+          script:
+            - echo "This script runs only on commit to the DEVELOP branch."
     featutre/*:
+      - step:
+          name: Execution feature branch
+          script:
+            - echo "This script runs only on commit to branches with names that match the FEATURE/* pattern."
+        
       - step:
           name: Dependency Installation
           caches:
@@ -17,7 +34,7 @@ pipelines:
       - step:
           name: Code Unit Testing
           script:
-            - npm run test
+            - npm runt test
           caches:
             - node
       - step:
