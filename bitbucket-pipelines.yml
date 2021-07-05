@@ -40,4 +40,4 @@ pipelines:
               variables:
                 BITBUCKET_USERNAME: sanjaykumar.k@siddhanintelligence.com
                 BITBUCKET_APP_PASSWORD: sanjay@6691
-                REPOSITORY: 'CI-pipeline'
+                REPOSITORY: ci-pipeline
