@@ -36,8 +36,8 @@ pipelines:
       - step:
           name: Trigger another execution
           script:
-            - pipe: atlassian/trigger-pipeline:4.1.5
+            - pipe: atlassian/trigger-pipeline:4.2.1
               variables:
-                BITBUCKET_USERNAME: SANJAYKUMAR
+                BITBUCKET_USERNAME: sanjaykumar.k@siddhanintelligence.com
                 BITBUCKET_APP_PASSWORD: sanjay@6691
                 REPOSITORY: 'CI-pipeline'
