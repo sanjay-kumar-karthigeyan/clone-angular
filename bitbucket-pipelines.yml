@@ -34,12 +34,10 @@ pipelines:
           artifacts:
             - node_modules/** # Save modules for next steps
       - step:
-          name: Lint Testing
+          name: Trigger another execution
           script:
-            - npm run lint
-      - step:
-          name: Code Unit Testing
-          script:
-            - npm run test
-          caches:
-            - node
+            - pipe: atlassian/trigger-pipeline:4.1.5
+              variables:
+                BITBUCKET_USERNAME: SANJAYKUMAR
+                BITBUCKET_APP_PASSWORD: sanjay@6691
+                REPOSITORY: 'CI-pipeline'
