@@ -44,10 +44,14 @@ pipelines:
       - step:
           name: Lint Testing
           script:
-            - npm run lint
+            - npm run lint            
+          after-script:
+            - echo "after lint error script has run!"
       - step:
           name: Code Unit Testing
           script:
             - npm run test
           caches:
             - node
+          after-script:
+            - echo "after ng test error script has run!"
