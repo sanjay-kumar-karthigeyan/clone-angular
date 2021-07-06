@@ -11,7 +11,8 @@ describe('ToDoCardComponent', () => {
   let component: ToDoCardComponent;
   let fixture: ComponentFixture<ToDoCardComponent>;
   let toDoService: ToDoCardService;
-
+  let cardList: Card;
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -37,11 +38,12 @@ describe('ToDoCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get all the card details', () => {
+  it('should get all the card details', async() => {
     component.getCardDetails();
     let instance: boolean = true;
     spyOn(toDoService, 'getCardData').and.callThrough();
-    toDoService.getCardData().then(data => {
+    await toDoService.getCardData().then(data => {
+      cardList = data.userData;
       for(let i = 0; i < data.userData.length; i++) {
         if(!instanceOfCard(data.userData[i])) {
           console.log('false')
@@ -51,6 +53,77 @@ describe('ToDoCardComponent', () => {
         }
       }
       expect(instance).toBeTruthy();
+    })
+  });
+
+  it('should create a card using API call', async() => {
+    let card: Card = {
+      name: 'testing card',
+      surname: 'test',
+      description: 'testing description'
+    }
+    // component.onSubmit(card);
+    spyOn(toDoService, 'createCardData').and.callThrough();
+    await toDoService.createCardData(card).then(async(data) => {
+      await toDoService.deleteCardData(data.userData._id);
+      expect(data.success).toBeTruthy();
+    })
+  });
+
+  it('should call onSubmit function', async() => {
+    let createServiceStub = {success: true, userData: {_id: '', name: '', surname :'', description: ''} as Card ,message: 'Card details fetched successfully'};
+    let card: Card = {
+      name: 'testing card',
+      surname: 'test',
+      description: 'testing description'
+    }
+
+    
+    spyOn(toDoService, 'createCardData').and.returnValue(
+      new Promise((resolve,reject) => {
+        resolve(createServiceStub)
+      })
+    );
+    component.onSubmit(card);
+    await toDoService.createCardData(card).then(data => {
+      expect(data.success).toBeTruthy();
+    })
+  })
+
+  it('should delete the card using API call', async() => {
+    let card: Card = {
+      _id: '60dc59d718647a15b8d453f3',
+      name: 'testing card',
+      surname: 'test',
+      description: 'testing description'
+    }
+   await toDoService.getCardData().then(data => {
+      cardList = data.userData;
+    });
+
+    // component.deleteCard(card);
+    spyOn(toDoService, 'deleteCardData').and.callThrough();
+    await toDoService.deleteCardData(card._id).then(data => {
+      expect(data.success).toBeTruthy();
+    })
+  });
+
+  it('should call the delete function', async() => {
+    let deleteServiceStub = {success: true,message: 'Card deleted successfully'};
+    let card: Card = {
+      name: 'testing card',
+      surname: 'test',
+      description: 'testing description'
+    };
+
+    spyOn(toDoService, 'deleteCardData').and.returnValue(
+      new Promise((resolve,reject) => {
+        resolve(deleteServiceStub)
+      })
+    );
+    component.deleteCard(card);
+    await toDoService.deleteCardData(card._id).then(data => {
+      expect(data.success).toBeTruthy();
     })
   })
 });
