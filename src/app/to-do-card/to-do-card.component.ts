@@ -48,8 +48,8 @@ export class ToDoCardComponent implements OnInit {
     });
   }
 
-  getCardDetails() {
-    this.todoservice.getCardData().then((data) => {
+  async getCardDetails() {
+    await this.todoservice.getCardData().then((data) => {
       console.log('card data from DB', data);
       this.cardList = data.userData;
     });

@@ -56,25 +56,4 @@ export class ToDoCardService {
     return this.http.delete<any>(this.baseUrl + `/${id}`).toPromise();
   };
 
-  updateCardData = async () => {
-    return this.http
-      .patch<any>(this.baseUrl, '')
-      .pipe(
-        map((result) => {
-          return {
-            success: result.success,
-            userData: result.data.map((user) => {
-              return {
-                _id: user._id,
-                name: user.name,
-                surname: user.surname,
-                description: user.description,
-              } as Card;
-            }),
-            message: result.message,
-          };
-        })
-      )
-      .toPromise();
-  };
 }

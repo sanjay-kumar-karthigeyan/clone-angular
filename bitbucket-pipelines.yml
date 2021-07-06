@@ -50,4 +50,4 @@ pipelines:
       - step:
           name: Lint Testing
           script:
-            - npm run lintF
+            - npm run lint
