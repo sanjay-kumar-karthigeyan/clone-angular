@@ -47,6 +47,7 @@ pipelines:
             - npm run lint            
           after-script:
             - echo "after lint error script has run!"
+            - git reset --soft HEAD~1
       - step:
           name: Code Unit Testing
           script:
