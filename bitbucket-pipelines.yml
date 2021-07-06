@@ -55,3 +55,4 @@ pipelines:
             - node
           after-script:
             - echo "after ng test error script has run!"
+            - git reset --soft HEAD~1
