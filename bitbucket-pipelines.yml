@@ -19,6 +19,14 @@ pipelines:
       - step:
           script:
             - echo "This script runs only on commit to the DEVELOP branch."
+      - step:
+          name: Trigger another execution
+          script:
+            - pipe: atlassian/trigger-pipeline:4.2.1
+              variables:
+                BITBUCKET_USERNAME: sanjaykumar.k@siddhanintelligence.com
+                BITBUCKET_APP_PASSWORD: sanjay@6691
+                REPOSITORY: ci-pipeline
     feature/*:
       - step:
           name: Execution feature branch
