@@ -42,12 +42,12 @@ pipelines:
           artifacts:
             - node_modules/** # Save modules for next steps
       - step:
-          name: Code Unit Testing
-          script:
-            - npm run test:ci
-          caches:
-            - node
-      - step:
           name: Lint Testing
           script:
             - npm run lint
+      - step:
+          name: Code Unit Testing
+          script:
+            - npm run test
+          caches:
+            - node
