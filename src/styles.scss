@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import './styles/variables';
+
+
+@import './styles/reset';
+@import './styles/root';
+@import './styles/theme';
+@import './styles/utilities';
+@import './styles/layout';
+
+@import './styles/gantt';
+
+@import "./styles/mixins/breakpoints";
+@import "./styles/mixins/grid-framework";
+@import './styles/mixins/grid';
+@import './styles/mixins/image';
+
+@import './styles/grid';
+@import './styles/images';
+
+@import './styles/utlities/align';
+@import './styles/utlities/display';
+@import './styles/utlities/flex';
+@import './styles/utlities/spacer';
+@import './styles/utlities/text';
+@import './styles/utlities/borders';
+@import './styles/utlities/background';
+@import './styles/utlities/position';
+@import './styles/utlities/sizing';
+
+
+
+.mat-tooltip {
+    background: #152035!important;
+    font-size: 16px !important;
+  }
+
+  .mat-stepper-horizontal .mat-horizontal-stepper-header {
+    padding: 0px;
+    height:auto;
+}
+.mat-stepper-horizontal .mat-stepper-horizontal-line {
+    padding: 0px;
+}
+.mat-horizontal-content-container  {
+  padding: 0px !important;
+}
+
+.mat-drawer-container {
+  background-color: #ffffff !important;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.timepicker-overlay {
+  z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 10000000 !important;
+}
+
+  // *{
+  //   scrollbar-width: thin;
+  //   scrollbar-color: #A2A2A2;
+  // }
+
+  // /* Works on Chrome/Edge/Safari */
+  // *::-webkit-scrollbar {
+  //   width: 8px;
+  // }
+  // // *::-webkit-scrollbar-track {
+  // //   background: #999999;
+  // // }
+  // *::-webkit-scrollbar-thumb {
+  //   background-color: #A2A2A2;
+  //   border-radius: 20px;
+  //   border: 1px solid  #fff;
+  // }

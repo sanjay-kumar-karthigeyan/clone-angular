@@ -6,21 +6,54 @@
 image: node:10.15.3
 
 pipelines:
+  default:
+    - step:
+        script:
+          - echo "This script runs on all branches that don't have any specific pipeline assigned in 'branches'."
   branches:
-    featutre/*:
+    main:
+      - step:
+          script:
+            - echo "This script runs only on commit to the MAIN branch."
+    develop:
+      - step:
+          script:
+            - echo "This script runs only on commit to the DEVELOP branch."
+      - step:
+          name: Trigger another execution
+          script:
+            - pipe: atlassian/trigger-pipeline:4.2.1
+              variables:
+                BITBUCKET_USERNAME: sanjaykumar.k@siddhanintelligence.com
+                BITBUCKET_APP_PASSWORD: sanjay@6691
+                REPOSITORY: ci-pipeline
+    feature/*:
+      - step:
+          name: Execution feature branch
+          script:
+            - echo "This script runs only on commit to branches with names that match the FEATURE/* pattern."
+        
       - step:
           name: Dependency Installation
           caches:
             - node
           script:
             - npm install
+          artifacts:
+            - node_modules/** # Save modules for next steps
+      - step:
+          name: Lint Testing
+          script:
+            - npm run lint            
+          after-script:
+            - echo "after lint error script has run!"
+            - git reset --soft HEAD~1
       - step:
           name: Code Unit Testing
           script:
             - npm run test
           caches:
             - node
-      - step:
-          name: Lint Testing
-          script:
-            - ng lint
+          after-script:
+            - echo "after ng test error script has run!"
+            - git reset --soft HEAD~1

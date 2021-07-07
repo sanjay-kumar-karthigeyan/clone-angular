@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-cicd-ux": {
+    "test-application": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-cicd-ux",
+            "outputPath": "dist/test-application",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -62,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-cicd-ux:build"
+            "browserTarget": "test-application:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-cicd-ux:build:production"
+              "browserTarget": "test-application:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-cicd-ux:build"
+            "browserTarget": "test-application:build"
           }
         },
         "test": {
@@ -83,12 +87,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "codeCoverage": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -110,19 +115,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-cicd-ux:serve"
+            "devServerTarget": "test-application:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-cicd-ux:serve:production"
+              "devServerTarget": "test-application:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-cicd-ux",
+  "defaultProject": "test-application",
   "cli": {
-    "analytics": "9b7052ef-980f-4617-8a85-e26fdd21089f"
+    "analytics": "38064a24-a860-420f-9b7c-69fb23a09a4a"
   }
 }

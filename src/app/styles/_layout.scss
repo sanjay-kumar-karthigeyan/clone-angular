@@ -1,0 +1,25 @@
+.si-page-layout {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // background: url("./assets/images/page-background.svg");
+  background: #fff;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  overflow: auto;
+  // padding: 16px;
+
+  .si-page-layout-header {
+    padding: var(--padding-page);
+    padding-bottom: 64px;
+    background: var(--si-primary-100);
+    color: white;
+  }
+
+
+}
+
+

@@ -1,0 +1,302 @@
+$directions: ('', l, r, t, b, y, x);
+
+$pixels: (
+  96: 96px,
+  80: 80px,
+  64: 64px,
+  56: 56px,
+  48: 48px,
+  44: 44px,
+  40: 40px,
+  36: 36px,
+  32: 32px,
+  24: 24px,
+  20: 20px,
+  16: 16px,
+  12: 12px,
+  8: 8px,
+  6: 6px,
+  4: 4px,
+  0: 0
+);
+
+@mixin space($property, $classPrefix, $directions, $space, $reversible: false) {
+  @each $direction in $directions {
+    @each $key, $value in $space {
+
+      @if ($direction == '') {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}: -$value;
+          }
+        }
+      }
+
+      @if ($direction == t) {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}-top: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}-top: -$value;
+          }
+        }
+      }
+
+      @if ($direction == r) {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}-right: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}-right: -$value;
+          }
+        }
+      }
+
+      @if ($direction == b) {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}-bottom: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}-bottom: -$value;
+          }
+        }
+      }
+
+      @if ($direction == l) {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}-left: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}-left: -$value;
+          }
+        }
+      }
+
+      @if ($direction == y) {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}-top: $value;
+          #{$property}-bottom: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}-top: -$value;
+            #{$property}-bottom: -$value;
+          }
+        }
+      }
+
+      @if ($direction == x) {
+        .#{$classPrefix}#{$direction}-#{$key} {
+          #{$property}-left: $value;
+          #{$property}-right: $value;
+        }
+
+        @if ($reversible == true) {
+          .-#{$classPrefix}#{$direction}-#{$key} {
+            #{$property}-left: -$value;
+            #{$property}-right: -$value;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+:root body{
+
+  @include space(padding, p, $directions, $pixels);
+  @include space(margin, m, $directions, $pixels, true);
+
+  // SI Card layout for Page
+  .si-card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .si-card-header {
+      height: 64px;
+      background: #eee;
+      border-bottom: 1px solid #ddd;
+      h2 {
+        margin: 0;
+      }
+    }
+    .si-card-content {}
+  }
+
+  .si-search-field {
+    background: #fff;
+    height: 44px;
+    border-radius: 100px;
+    overflow: auto;
+
+    .mat-icon {
+      margin:0 12px;
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+    }
+    .si-search-input {
+      border: 0;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 44px;
+      height: 44px;
+      outline: none;
+
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #ccc;
+        opacity: 1; /* Firefox */
+      }
+    }
+  }
+
+  .text-base {
+    color: var(--text-color);
+  }
+
+  .text-base-light {
+    color: var(--text-color-light);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary-color);
+  }
+
+  .text-secondary-light {
+    color: var(--text-secondary-color-light);
+  }
+
+  .text-hint {
+    color: var(--text-hint);
+  }
+
+  .text-gray {
+    color: #aaa;
+  }
+
+  @each $color in ("primary") {
+    @each $i in (100, 500, 700) {
+      .bg-#{$color}-#{$i} {
+        background: var(--si-#{$color}-#{$i});
+      }
+
+      .text-#{$color}-#{$i} {
+        color: var(--si-#{$color}-#{$i});
+      }
+
+      .border-#{$color}-#{$i} {
+        border-color: var(--si-#{$color}-#{$i});
+      }
+    }
+  }
+
+  @each $color in ("accent") {
+    @each $i in (100, 200, 400) {
+      .bg-#{$color}-#{$i} {
+        background: var(--si-#{$color}-#{$i});
+      }
+
+      .text-#{$color}-#{$i} {
+        color: var(--si-#{$color}-#{$i});
+      }
+
+      .border-#{$color}-#{$i} {
+        border-color: var(--si-#{$color}-#{$i});
+      }
+    }
+  }
+
+  .bg-white {
+    background: #fff;
+  }
+
+  .bg-gray {
+    background: #ddd;
+  }
+
+  // Text Align
+  .text-left {
+    text-align: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .text-justify {
+    text-align: justify;
+  }
+
+    // Font Weights
+
+    .font-light {
+      font-weight: 300;
+    }
+
+    .font-normal {
+      font-weight: 400;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+  .mat-icon-button .mat-icon.mat-icon-small {
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  .mat-menu-trigger .mat-button-wrapper:after {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0px 5px;
+    border-color: currentColor transparent transparent transparent;
+    content: '';
+    display: inline-block;
+    top: 50%;
+    margin-left: 8px;
+    transform: translateY(-50%);
+  }
+
+  .hover\:bg-hover:hover {
+    background-color: #f7f7f7;
+  }
+
+  // Cursor
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+}

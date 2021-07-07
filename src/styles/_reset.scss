@@ -1,0 +1,14 @@
+*, ::before,::after {
+  box-sizing: border-box;
+}
+html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  // font-family: Roboto, "Helvetica Neue", sans-serif; 
+  font-family: var(--font-family);
+  background: $white;
+}
+*:focus, a:focus, input:focus, button:focus {
+  outline: none;
+}

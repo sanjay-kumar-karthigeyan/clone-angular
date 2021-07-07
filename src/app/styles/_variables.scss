@@ -1,0 +1,177 @@
+$primary : #254070;
+$primary_dark: #001a44;
+$primary_light: #556a9f;
+
+$accent: #f37807;
+$accent_dark: #b94900;
+$accent_light: #ffa944;
+
+$success: #3FA015;
+
+$background: #42414D;
+$background_dark: #313045;
+
+//other colors
+$rating-color: #E2E244;
+$section-title: #B8B1FF;
+
+$menu-background: #343434;
+$submenu-background: #484848;
+
+$white: $light-primary-text;
+
+$body-bg: $background;
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "primary-light":    $primary_light,
+    "primary-dark":    $primary_dark,
+    "accent":    $accent,
+    "accent-light":    $accent_light,
+    "accent-dark":    $accent_dark,
+    "success": $success,
+    "background": $background,
+    "background-dark": $background_dark,
+    "light":      $light-primary-text,
+    "light-secondary": $light-secondary-text,
+    "light-disabled": $light-disabled-text,
+    "dark":       $dark-primary-text,
+    "dark-secondary": $dark-secondary-text,
+    "dark-disabled": $dark-disabled-text,
+    "rating": $rating-color,
+    "section-title": $section-title,
+    "light-divider": $light-dividers,
+    "dark-divider": $dark-dividers,
+    "menu": $menu-background,
+    "submenu": $submenu-background
+  ),
+  $theme-colors
+);
+
+$mat-si-palette: (
+  100: var(--primary-light),
+  500: var(--primary),
+  700: var(--primary-dark),
+  A100: var(--accent-light),
+  A200: var(--accent),
+  A400: var(--accent-dark),
+  contrast: (
+    500: $light-primary-text,
+    A200: $dark-primary-text,
+  )
+);
+
+
+$font-family: 'Montserrat', sans-serif !default;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            500 !default;
+$font-weight-bolder:          700 !default;
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3)
+  ),
+  $spacers
+);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  ),
+  $sizes
+);
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px
+// ) !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 1024px,
+  lg: 1280px,
+  xl: 1920px
+) !default;
+
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 600px,
+  md: 1024px,
+  lg: 1280px,
+  xl: 1280px
+) !default;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                12 !default;
+$grid-gutter-width:           16px !default; //default 30px
+$grid-row-columns:            6 !default;
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$positions: static, relative, absolute, fixed, sticky !default;
+
+
+$border-width:                1px !default;
+$borders: () !default;
+$borders: map-merge(
+  (
+    'small': ($border-width * 1),
+    'medium': ($border-width * 2),
+    'large': ($border-width * 3),
+  ),
+  $borders
+);
+
+$border-color: $dark-secondary-text;
+
+$border-radius:               .25rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;
+
+$rounded-pill:                50rem !default;
+
+$zindex-sticky:                     1020 !default;
+$zindex-fixed:                      1030 !default;
